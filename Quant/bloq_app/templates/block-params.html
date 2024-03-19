@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content2 %}
+                
+    <!-- Block dimensions -->
+    <div class="container-2">
+        <h1>Choose block dimensions</h1>
+        <form action="{% url 'block-params' %}" method="POST" id="block-form">
+            {% csrf_token %}
+            <div class="param">
+                <label for="width">Width</label>
+                <input type="number" id="block-width" name="width" placeholder="0">
+                <p>{{current_unit.unit}}</p>
+            </div>
+            <div class="param">
+                <label for="height">Height</label>
+                <input type="number" id="block-height" name="height" placeholder="0">
+                <p>{{current_unit.unit}}</p>
+            </div>
+            <div class="param">
+                <label for="length">Length</label>
+                <input type="number" id="block-length" name="length" placeholder="0">
+                <p>{{current_unit.unit}}</p>
+            </div>
+            <div class="param">
+                <label for="layer-name">Layer name</label>
+                <input type="text" id="layer-name" name="layer-name" placeholder="e.g A-WALL">
+            </div>
+            <div id="unit-data" data-unit="{{ current_unit.unit }}">
+                <img src="{% static 'images/Block.png' %}" width="20%">
+                <p id="block-width-dim">0 {{current_unit.unit}}</p>
+                <p id="block-height-dim">0 {{current_unit.unit}}</p>
+                <p id="block-length-dim">0 {{current_unit.unit}}</p>
+            </div>
+            <div class="element-types">
+                <!-- Update block types here -->
+            </div>
+            <div class="param" id="add-type">
+                <a href="{% url 'add-block-type' %}"><button type="button" id="add-type-btn">Add Block Type</button></a>
+            </div>
+            <div class="buttons">
+                <a href="{% url 'cancel' %}"><button type="button">Cancel</button></a>
+                <a href="{% url 'door-params' %}"><button type="button">Next</button></a>
+            </div>
+        </form>
+    </div>
+
+{% endblock content2 %}

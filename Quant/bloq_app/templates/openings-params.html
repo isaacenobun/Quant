@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content2 %}
+    <!-- Windows dimensions -->
+    <div class="container-2">
+        <h1>Describe openings</h1>
+        <form method="POST">
+            {% csrf_token %}
+            <div class="param">
+                <label for="width">Area of opening</label>
+                <input type="number" id="window-width" name="width" placeholder="150">
+                <p>mm</p>
+            </div>
+            <div class="param">
+                <label for="quantity">Quantity</label>
+                <input type="number" id="quantity" name="quantity" placeholder="0">
+            </div>
+            <div class="element-types">
+                <!-- Update openings here -->
+            </div>
+            <div class="param" id="add-type">
+                <button type="button" id="add-type-btn">Add Opening</button>
+            </div>
+            <div class="buttons">
+                <a href="{% url 'door-params' %}"><button type="button">Back</button></a>
+                <a href="{% url 'details' %}"><button type="button">Next</button></a>
+            </div>
+        </form>
+    </div>
+{% endblock content2 %}

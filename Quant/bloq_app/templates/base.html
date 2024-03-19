@@ -1,0 +1,27 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+{% include 'head.html' %}
+<body>
+    {% include 'partials/_header.html' %}
+
+    <div class="bg">
+        <img src="{% static 'images/background.jpg' %}" width=100%>
+    </div>
+
+    {% block content1 %}
+        
+    {% endblock content1 %}
+
+    {% block content2 %}
+        
+    {% endblock content2 %}
+        
+</body>
+
+<script src="{% static 'js/script.js' %}"></script>
+
+
+</html>

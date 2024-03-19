@@ -151,3 +151,21 @@ def walls_output(file_path,layer_name,threshold):
     # print(f"\nTotal number of walls: {total_walls}")
 
     return total_walls
+
+def entity_count(file_path):
+    count = 0
+    # Read the DXF file
+    doc = ezdxf.readfile(file_path)
+    modelspace = doc.modelspace()
+    for entity in modelspace:
+        if entity.dxftype() == 'LINE' and entity.dxf.layer == "A-WALL":
+            count += 1
+    return count
+
+def get_layers(file_path):
+    layers = []
+    # Read the DXF file
+    doc = ezdxf.readfile(file_path)
+    for layer in doc.layers:
+        layers.append(layer.dxf.name)
+    return layers
