@@ -2,37 +2,46 @@
 {% load static %}
 
 {% block content2 %}
+    <script> 
+    var windowTypeCounter = {{ existing_windows | length }} + 1;
+    var currentUnit = '{{ current_unit.unit }}';
+    </script>
+
     <!-- Windows dimensions -->
     <div class="container-2">
         <h1>Choose window dimensions</h1>
-        <form method="POST">
+        <form action="{% url 'add-window-type' %}" method="POST" id="window-form">
             {% csrf_token %}
             <div class="param">
-                <label for="width">Width</label>
-                <input type="number" id="window-width" name="width" placeholder="150">
-                <p>mm</p>
+                <label for="window-width">Width</label>
+                <input type="number" id="window-width" name="width" placeholder="0" required>
+                <p>{{current_unit.unit}}</p>
             </div>
             <div class="param">
-                <label for="height">Height</label>
-                <input type="number" id="window-height" name="height" placeholder="225">
-                <p>mm</p>
+                <label for="window-height">Height</label>
+                <input type="number" id="window-height" name="height" placeholder="0" required>
+                <p>{{current_unit.unit}}</p>
             </div>
             <div class="param">
-                <label for="quantity">Quantity</label>
-                <input type="number" id="quantity" name="quantity" placeholder="0">
+                <label for="window-quantity">Quantity</label>
+                <input type="number" id="window-quantity" name="quantity" placeholder="0" required>
+            </div>
+            <div>
+                <img src="{% static 'images/Window.png' %}" width="20%" style="transform: translateY(-130px);">
+                <p id="window-width-dim">0 {{current_unit.unit}}</p>
+                <p id="window-height-dim">0 {{current_unit.unit}}</p>
             </div>
             <div class="element-types">
-                <!-- Update window types here -->
+                {% for window in existing_windows %}
+                <label class="window-tag-label" data-width="{{ window.width }}{{current_unit.unit}}" data-height="{{ window.height }}{{current_unit.unit}}" data-quantity="{{ window.quantity }} Windows">Window type {{ forloop.counter }}<a href="{% url 'delete-window-type' window.id %}"><span class="delete-btn">x</span></a></label>
+                {% endfor %}
             </div>
             <div class="param" id="add-type">
-                <button type="button" id="add-type-btn">Add Window Type</button>
+                <button type="submit" id="add-window-type-btn">Add Window Type</button>
             </div>
-            <img src="{% static 'images/Window.png' %}" width="20%" style="transform: translateY(-130px);">
-            <p id="window-width-dim">150 mm</p>
-            <p id="window-height-dim">225 mm</p>
             <div class="buttons">
                 <a href="{% url 'door-params' %}"><button type="button">Back</button></a>
-                <a href="{% url 'openings-params' %}"><button type="button">Next</button></a>
+                <a href="{% url 'opening-params' %}"><button type="button">Next</button></a>
             </div>
         </form>
     </div>

@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content2 %}
+    <script> 
+    var openingTypeCounter = {{ existing_openings | length }} + 1;
+    var currentUnit = '{{ current_unit.unit }}';
+    </script>
+
+    <!-- Windows dimensions -->
+    <div class="container-2">
+        <h1>Describe openings</h1>
+        <form action="{% url 'add-opening-type-edit' %}" method="POST" id="opening-form">
+            {% csrf_token %}
+            <div class="param">
+                <label for="opening-area">Area of opening</label>
+                <input type="number" id="opening-area" name="area" placeholder="0" required>
+                <p>{{current_unit.unit}}&sup2</p>
+            </div>
+            <div class="param">
+                <label for="opening-quantity">Quantity</label>
+                <input type="number" id="opening-quantity" name="quantity" placeholder="0" required>
+            </div>
+            <div class="element-types">
+                {% for opening in existing_openings %}
+                <label class="opening-tag-label" data-area="{{ opening.area }}{{current_unit.unit}}&sup2" data-quantity="{{ opening.quantity }} Openings">Opening type {{ forloop.counter }}<a href="{% url 'delete-opening-type-edit' opening.id %}"><span class="delete-btn">x</span></a></label>
+                {% endfor %}
+            </div>
+            <div class="param" id="add-type">
+                <button type="submit" id="add-opening-type-btn">Add Opening</button>
+            </div>
+            <div class="buttons">
+                {% comment %} <a href="{% url 'door-params' %}"><button type="button">Back</button></a> {% endcomment %}
+                <a href="{% url 'details' %}"><button type="button">Done</button></a>
+            </div>
+        </form>
+    </div>
+{% endblock content2 %}

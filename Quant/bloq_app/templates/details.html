@@ -3,6 +3,89 @@
 
 
 {% block content2 %}
-    
+
+<div class="result">
+    <div class="plot">
+        <img src="{% static 'plot_images/plot.png' %}" width="300px">
+    </div>
+    <div class="details">
+        <table>
+            <tr>
+                <th>Element</th>
+                <th>Types</th>
+                <th>Quantity</th>
+                <th>Edit</th>
+            </tr>
+            <tr>
+                <td>Blocks</td>
+                <td style="text-align: center;" class="type-quantity">
+                    {% for block in blocks %}
+                        <p>Type {{forloop.counter}}</p>
+                        <small>{{block.width}}{{current_unit}} x {{block.height}}{{current_unit}} x {{block.length}}{{current_unit}}</small>
+                    {% endfor %}   
+                </td>
+                <td class="type-quantity">-</td>
+                <td><a href="{% url 'block-params-edit' %}"><button class="edit-btn">Edit</button></a></td>
+            </tr>
+            <tr>
+                <td>Doors</td>
+                <td style="text-align: center;" class="type-quantity">
+                    {% for door in doors %}
+                        <p>Type {{forloop.counter}}</p>
+                        <small>{{door.width}}{{current_unit}} x {{door.height}}{{current_unit}}</small>
+                    {% endfor %}   
+                </td>
+                <td class="type-quantity">
+                    {% for door in doors %}
+                    <p>{{door.quantity}}</p>
+                    {% endfor %}     
+                </td>
+                <td><a href="{% url 'door-params-edit' %}"><button class="edit-btn">Edit</button></a></td>
+            </tr>
+            <tr>
+                <td>Windows</td>
+                <td style="text-align: center;" class="type-quantity">
+                    {% for window in windows %}
+                        <p>Type {{forloop.counter}}</p>
+                        <small>{{window.width}}{{current_unit}} x {{window.height}}{{current_unit}}</small>
+                    {% endfor %}   
+                </td>
+                <td class="type-quantity">
+                    {% for window in windows %}
+                    <p>{{window.quantity}}</p>
+                    {% endfor %}     
+                </td>
+                <td><a href="{% url 'window-params-edit' %}"><button class="edit-btn">Edit</button></a></td>
+            </tr>
+            <tr>
+                <td>Openings</td>
+                <td style="text-align: center;" class="type-quantity">
+                    {% for opening in openings %}
+                        <p>Type {{forloop.counter}}</p>
+                        <small>{{opening.area}}{{current_unit}}&sup2</small>
+                    {% endfor %}   
+                </td>
+                <td class="type-quantity">
+                    {% for opening in openings %}
+                    <p>{{opening.quantity}}</p>
+                    {% endfor %}     
+                </td>
+                <td><a href="{% url 'opening-params-edit' %}"><button class="edit-btn">Edit</button></a></td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<form action="{% url 'report' %}" method="POST" id="finish">
+    {% csrf_token %}
+    <div class="param">
+        <label for="height">Specify the height of the structure</label>
+        <input type="number" id="height" name="height" placeholder="0" required>
+        <p>{{current_unit.unit}}</p>
+        <button type="submit">Finish</button>
+    </div>
+</form>
+
+
 {% endblock content2 %}
     

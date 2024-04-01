@@ -1,0 +1,55 @@
+// Add element types
+var addBlockBtn = document.getElementById('add-type-btn');
+var blockTypesContainer = document.querySelector('.element-types');
+
+addBlockBtn.addEventListener('click', function(event) {
+    event.preventDefault(); // Prevent default form submission
+
+    // Check if all required fields are filled
+    var widthInput = document.getElementById('block-width');
+    var heightInput = document.getElementById('block-height');
+    var lengthInput = document.getElementById('block-length');
+    var layerNameInput = document.getElementById('layer-name');
+
+    if (widthInput.value && heightInput.value && lengthInput.value && layerNameInput.value) {
+        // Create a new label element
+        var label = document.createElement('label');
+        label.textContent = 'Type ' + blockTypeCounter;
+        label.setAttribute('for', 'block-type-' + blockTypeCounter);
+        label.setAttribute('id', 'block-type-label');
+        label.setAttribute('class', 'tag-label');
+
+        // Create the delete button span element
+        var deleteBtn = document.createElement('span');
+        deleteBtn.className = 'delete-btn';
+        deleteBtn.textContent = 'x';
+        deleteBtn.setAttribute('id', 'block-delete-btn-' + blockTypeCounter); // Set a unique ID for each delete button
+
+        // Append the delete button to the label
+        label.appendChild(deleteBtn);
+
+        // Append the label to the block types container
+        blockTypesContainer.appendChild(label);
+
+        // Increment the block type counter for the next block
+        blockTypeCounter++;
+
+        // After adding block type, submit form asynchronously using AJAX
+        var blockForm = document.getElementById('block-form');
+        var formData = new FormData(blockForm);
+
+        // Fetch unit value from the DOM
+        var unitValue = document.getElementById('unit-data').getAttribute('data-unit');
+
+        // Append unit value to the form data
+        formData.append('unit', unitValue);
+
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', blockForm.action);
+        xhr.setRequestHeader('X-CSRFToken', '{{ csrf_token }}');
+        xhr.send(formData);
+    } else {
+        // Alert the user to fill in all required fields
+        alert('Please fill in all required fields before adding types.');
+    }
+});

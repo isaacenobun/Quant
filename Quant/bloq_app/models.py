@@ -14,7 +14,7 @@ class SingletonManager(models.Manager):
 class units_model(models.Model):
     UNIT_CHOICES = [
         ('mm', 'Millimeter'),
-        ('inch', 'Inch'),
+        ('inch', 'Inch'),   
         ('m', 'Meter'),
         ('ft', 'Foot'),
         ('cm', 'Centimeter'),

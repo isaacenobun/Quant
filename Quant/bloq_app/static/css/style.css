@@ -100,15 +100,15 @@ input[type="file"] {
     transition: background-color 0.3s ease;
 }
 
+.container label:hover {
+    background-color: #45a049;
+}
+
 .unit{
     display: flex;
     width: 50%;
     margin: auto;
     padding: 20px;
-}
-
-.container label:hover {
-    background-color: #45a049;
 }
 
 button[type="submit"] {
@@ -268,17 +268,6 @@ input[type="text"] {
     background-color: #45a049;
 }
 
-.tag-label {
-    display: inline-flex;
-    background-color: #e0e0e0;
-    color: #333;
-    border-radius: 5px;
-    padding: 5px 10px;
-    margin: 0 15px 10px 0;
-    position: relative;
-    font-size: 10px;
-}
-
 .delete-btn {
     cursor: pointer;
     position: absolute;
@@ -290,4 +279,193 @@ input[type="text"] {
 
 .delete-btn:hover {
     color: #666;
+}
+
+.block-tag-label {
+    display: inline-flex;
+    background-color: #e0e0e0;
+    color: #333;
+    border-radius: 5px;
+    padding: 5px 10px;
+    margin: 0 15px 10px 0;
+    position: relative;
+    font-size: 10px;
+}
+
+.block-tag-label:hover::after {
+    content: "Width: " attr(data-width) "\AHeight: " attr(data-height) "\ALength: " attr(data-length) "\ALayer: " attr(data-layer);
+    position: absolute;
+    top: 100%; /* Position below the label */
+    left: 0;
+    width: 100px;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    white-space: nowrap; /* Prevent line breaks */
+    white-space: pre-wrap; /* Allow line breaks */
+}
+
+.door-tag-label {
+    display: inline-flex;
+    background-color: #e0e0e0;
+    color: #333;
+    border-radius: 5px;
+    padding: 5px 10px;
+    margin: 0 15px 10px 0;
+    position: relative;
+    font-size: 10px;
+}
+
+.door-tag-label:hover::after {
+    content: "Width: " attr(data-width) "\AHeight: " attr(data-height) "\AQuantity: " attr(data-quantity);
+    position: absolute;
+    top: 100%; /* Position below the label */
+    left: 0;
+    width: 100px;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    white-space: nowrap; /* Prevent line breaks */
+    white-space: pre-wrap; /* Allow line breaks */
+}
+
+.window-tag-label {
+    display: inline-flex;
+    background-color: #e0e0e0;
+    color: #333;
+    border-radius: 5px;
+    padding: 5px 10px;
+    margin: 0 15px 10px 0;
+    position: relative;
+    font-size: 10px;
+}
+
+.window-tag-label:hover::after {
+    content: "Width: " attr(data-width) "\AHeight: " attr(data-height) "\AQuantity: " attr(data-quantity);
+    position: absolute;
+    top: 100%; /* Position below the label */
+    left: 0;
+    width: 100px;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    white-space: nowrap; /* Prevent line breaks */
+    white-space: pre-wrap; /* Allow line breaks */
+}
+
+.opening-tag-label {
+    display: inline-flex;
+    background-color: #e0e0e0;
+    color: #333;
+    border-radius: 5px;
+    padding: 5px 10px;
+    margin: 0 15px 10px 0;
+    position: relative;
+    font-size: 10px;
+}
+
+.opening-tag-label:hover::after {
+    content: "Area: " attr(data-area) "\AQuantity: " attr(data-quantity);
+    position: absolute;
+    top: 100%; /* Position below the label */
+    left: 0;
+    width: 100px;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    white-space: nowrap; /* Prevent line breaks */
+    white-space: pre-wrap; /* Allow line breaks */
+}
+
+.result{
+    margin: 20px;
+    padding: 20px;
+    display: flex;
+    width: 100%;
+    mix-blend-mode: darken;
+}
+
+.plot{
+    transition: scale 1.005s;
+}
+
+.plot:hover{
+    scale: 1.01;
+}
+
+.details {
+    margin: 0 0 0 150px;
+    font-family: Arial, sans-serif;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+table small{
+    font-size: 10px;
+}
+
+th, td {
+    padding: 12px 15px;
+    text-align: center;
+    border-bottom: 1px solid #dee2e6;
+}
+
+th {
+    background-color: #343a40;
+    color: #ffffff;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tr:hover {
+    background-color: #e9ecef;
+}
+
+td:last-child {
+    text-align: center;
+}
+
+.edit-btn {
+    padding: 8px 12px;
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.edit-btn:hover {
+    background-color: #0056b3;
+}
+
+.result{
+    align-items: center;
+}
+
+.typewriter-text {
+overflow: hidden;
+white-space: nowrap;
+margin: 0 auto;
+}
+
+.typewriter-font {
+font-family: 'Courier New', Courier, monospace;
+}
+
+#typewriter-container{
+    margin: 20px;
+    font-size: 20px;
 }

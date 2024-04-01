@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content2 %}
+    <script> 
+    var blockTypeCounter = {{ existing_blocks | length }} + 1;
+    var currentUnit = '{{ current_unit.unit }}';
+    </script>
+    
+    <!-- Block dimensions -->
+    <div class="container-2">
+        <h1>Choose block dimensions</h1>
+        <form action="{% url 'add-block-type-edit' %}" method="POST" id="block-form">
+            {% csrf_token %}
+            <div class="param">
+                <label for="block-width">Width</label>
+                <input type="number" id="block-width" name="width" placeholder="0" required>
+                <p>{{current_unit.unit}}</p>
+            </div>
+            <div class="param">
+                <label for="block-height">Height</label>
+                <input type="number" id="block-height" name="height" placeholder="0" required>
+                <p>{{current_unit.unit}}</p>
+            </div>
+            <div class="param">
+                <label for="block-length">Length</label>
+                <input type="number" id="block-length" name="length" placeholder="0" required>
+                <p>{{current_unit.unit}}</p>
+            </div>
+            <div class="param">
+                <label for="block-layer">Layer</label>
+                <input type="text" id="block-layer" name="layer" placeholder="e.g A-WALL" required>
+            </div>
+            <div>
+                <img src="{% static 'images/Block.png' %}" width="20%">
+                <p id="block-width-dim">0 {{current_unit.unit}}</p>
+                <p id="block-height-dim">0 {{current_unit.unit}}</p>
+                <p id="block-length-dim">0 {{current_unit.unit}}</p>
+            </div>
+            <div class="element-types">
+                {% for block in existing_blocks %}
+                <label class="block-tag-label" data-width="{{ block.width }}{{current_unit.unit}}" data-height="{{ block.height }}{{current_unit.unit}}" data-length="{{ block.length }}{{current_unit.unit}}" data-layer="{{ block.layer }}">Block type {{ forloop.counter }}<a href="{% url 'delete-block-type-edit' block.id %}"><span class="delete-btn">x</span></a></label>
+                {% endfor %}
+            </div>            
+            <div class="param" id="add-type">
+                <button type="submit" id="add-block-type-btn">Add Block Type</button>
+            </div>
+            <div class="buttons">
+                {% comment %} <a href="{% url 'cancel' %}"><button type="button">Cancel</button></a> {% endcomment %}
+                <a href="{% url 'details' %}"><button type="button">Done</button></a>
+            </div>
+        </form>
+    </div>
+
+{% endblock content2 %}

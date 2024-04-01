@@ -10,9 +10,9 @@
             <label for="dxf_file">Choose DXF File</label>
             <input type="file" id="dxf_file" name="dxf_file" accept=".dxf">
             <button type="submit">Upload</button>
-            
+
             <div class="unit">
-                <label>Select unit:</label>
+                <p>Select unit:</p>
                 <select name="unit" id="unit">
                     {% for choice in units.UNIT_CHOICES %}
                         <option value="{{ choice.0 }}">{{ choice.1 }}</option>

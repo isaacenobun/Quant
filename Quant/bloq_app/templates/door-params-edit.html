@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content2 %}
+    <script> 
+    var doorTypeCounter = {{ existing_doors | length }} + 1;
+    var currentUnit = '{{ current_unit.unit }}';
+    </script>
+
+    <!-- Door dimensions -->
+    <div class="container-2">
+        <h1>Choose door dimensions</h1>
+        <form action="{% url 'add-door-type-edit' %}" method="POST" id="door-form">
+            {% csrf_token %}
+            <div class="param">
+                <label for="door-width">Width</label>
+                <input type="number" id="door-width" name="width" placeholder="0" required>
+                <p>{{current_unit.unit}}</p>
+            </div>
+            <div class="param">
+                <label for="door-height">Height</label>
+                <input type="number" id="door-height" name="height" placeholder="0" required>
+                <p>{{current_unit.unit}}</p>
+            </div>
+            <div class="param">
+                <label for="door-quantity">Quantity</label>
+                <input type="number" id="door-quantity" name="quantity" placeholder="0" required>
+            </div>
+            <div>
+                <img src="{% static 'images/Door.png' %}" width="20%" style="transform: translateY(-130px);">
+                <p id="door-width-dim">0 {{current_unit.unit}}</p>
+                <p id="door-height-dim">0 {{current_unit.unit}}</p>
+            </div>
+            <div class="element-types">
+                {% for door in existing_doors %}
+                <label class="door-tag-label" data-width="{{ door.width }}{{current_unit.unit}}" data-height="{{ door.height }}{{current_unit.unit}}" data-quantity="{{ door.quantity }} doors">Door type {{ forloop.counter }}<a href="{% url 'delete-door-type-edit' door.id %}"><span class="delete-btn">x</span></a></label>
+                {% endfor %}
+            </div>
+            <div class="param" id="add-type">
+                <button type="submit" id="add-door-type-btn">Add Door Type</button>
+            </div>
+                
+            <div class="buttons">
+                <!-- <a href="{% url 'block-params' %}"><button type="button">Back</button></a> -->
+                <a href="{% url 'details' %}"><button type="button">Done</button></a>
+            </div>
+        </form>
+    </div>
+{% endblock content2 %}

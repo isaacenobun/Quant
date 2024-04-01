@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content2 %}
+
+{{wall_length}}
+
+<div class="typewriter-text typewriter-font" id="typewriter-container">
+{% for layer, wall_no in wall_block.items %}
+    <p style="color: rgb(13, 191, 13);">{{ wall_no }} walls found on layer '{{ layer }}' (<small>Block type {{ forloop.counter }}</small>)</p>
+{% endfor %}
+
+<p style="color: rgb(13, 191, 13);">{{ dxf_door_no }} doors found in DXF file</p>
+<p style="color: rgb(13, 28, 191);">{{ input_door_no }} doors were input by user</p>
+
+
+{% if dxf_door_no == input_door_no %}
+    <p style="color: rgb(13, 191, 13);">Door quantity is consistent with input</p>
+{% else %}
+    <p style="color: rgb(191, 13, 13);">Door quantity was overidden by input</p>
+{% endif %}
+
+<p >Total area of doors is {{ door_area }}{{ current_unit }}&sup2</p>
+
+<p>Area of space above doors is {{ door_space }}{{ current_unit }}&sup2</p>
+
+<p>Total area of windows is {{ window_area }}{{ current_unit }}&sup2</p>
+
+<p>Total area of openings is {{ openings_area }}{{ current_unit }}&sup2</p>
+
+{% for area in new_total_areas %}
+    <p>Total area of walls with block type {{ forloop.counter }} is {{ area }}{{ current_unit }}&sup2</p>
+{% endfor %}
+
+{% for no in block_no %}
+    <p>Total number of block type {{ forloop.counter }} blocks needed is <b>{{ no }} blocks</b></p>
+{% endfor %}
+<br><hr>
+<p style="font-weight: bold; font-size: 25px;">Total blocks needed is {{total_blocks}} blocks</p>
+
+</div>
+{% endblock content2 %}
+
