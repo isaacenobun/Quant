@@ -1,0 +1,471 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+/* Backdrop */
+.bg{
+    position: absolute;
+    z-index:-1;
+    mix-blend-mode: overlay;
+}
+
+/* Font */
+.dm-serif display-regular {
+    font-family: "DM Serif Display", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+  
+.dm-serif display-regular-italic {
+    font-family: "DM Serif Display", serif;
+    font-weight: 400;
+    font-style: italic;
+}
+
+/* Navbar */
+nav li{
+    display: inline-flex;
+    font-family: Arial, sans-serif;
+    margin-right: 50px;
+    color: white;
+    font-size: 15px;
+}
+
+nav{
+    margin: 0;
+    padding: 25px;
+    background: rgb(0, 0, 0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+nav a{
+    text-decoration: none;
+    cursor: pointer;
+}
+
+nav a h1{
+    color: white;
+}
+
+.logo{
+    color: white;
+    position: absolute;
+    left: 40px;
+    font-family: "DM Serif Display", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+}
+
+/* Upload Form */
+.container {
+    width: 50%;
+    margin: 200px auto;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.container h1 {
+    text-align: center;
+    color: #333;
+}
+
+form {
+    text-align: center;
+    margin-top: 20px;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.container label {
+    display: inline-block;
+    background-color: #4caf50;
+    color: #fff;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.container label:hover {
+    background-color: #45a049;
+}
+
+.unit{
+    display: flex;
+    width: 50%;
+    margin: auto;
+    padding: 20px;
+}
+
+button[type="submit"] {
+    background-color: #008CBA;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #005f6b;
+}
+
+/* Params form 1 */
+.container-2 {
+    width: 50%;
+    margin: 150px auto;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.container-2 h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+.container-2 form {
+    text-align: center;
+    margin-top: 20px;
+}
+
+input[type="number"] {
+    width: 15%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+input[type="text"] {
+    width: 15%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.container-2 .buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    align-items: flex-end;
+}
+
+.container-2 button {
+    background-color: #008CBA;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.container-2 button:hover {
+    background-color: #005f6b;
+}
+
+.param{
+    display: flex;
+    align-items: first baseline;
+}
+
+.param label{
+    margin: 0 20px 0 100px;
+}
+
+.param p{
+    margin-left: 15px;
+    font-size: 15px;
+    color: darkgrey;
+}
+
+.container-2 img{
+    position: absolute;
+    transform: translateY(-175px) translateX(8px);
+}
+
+#block-width-dim{
+    position: absolute;
+    transform: translateX(570px) translateY(-160px) rotate(48deg);
+    font-size: 10px;
+    color: #005f6b;
+}
+
+#block-height-dim{
+    position: absolute;
+    transform: translateX(595px) translateY(-100px) rotate(90deg);
+    font-size: 10px;
+    color: #005f6b;
+}
+
+#block-length-dim{
+    position: absolute;
+    transform: translateX(535px) translateY(-40px) rotate(-25deg);
+    font-size: 10px;
+    color: #005f6b;
+}
+
+#door-width-dim{
+    position: absolute;
+    transform: translateX(480px) translateY(-140px);
+    font-size: 10px;
+    color: #005f6b;
+}
+
+#door-height-dim{
+    position: absolute;
+    transform: translateX(540px) translateY(-60px) rotate(90deg);
+    font-size: 10px;
+    color: #005f6b;
+}
+
+#window-width-dim{
+    position: absolute;
+    transform: translateX(480px) translateY(-120px);
+    font-size: 10px;
+    color: #005f6b;
+}
+
+#window-height-dim{
+    position: absolute;
+    transform: translateX(590px) translateY(-60px) rotate(90deg);
+    font-size: 10px;
+    color: #005f6b;
+}
+
+.param button {
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.param button:hover {
+    background-color: #45a049;
+}
+
+.delete-btn {
+    cursor: pointer;
+    position: absolute;
+    right: 2px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #999;
+}
+
+.delete-btn:hover {
+    color: #666;
+}
+
+.block-tag-label {
+    display: inline-flex;
+    background-color: #e0e0e0;
+    color: #333;
+    border-radius: 5px;
+    padding: 5px 10px;
+    margin: 0 15px 10px 0;
+    position: relative;
+    font-size: 10px;
+}
+
+.block-tag-label:hover::after {
+    content: "Width: " attr(data-width) "\AHeight: " attr(data-height) "\ALength: " attr(data-length) "\ALayer: " attr(data-layer);
+    position: absolute;
+    top: 100%; /* Position below the label */
+    left: 0;
+    width: 100px;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    white-space: nowrap; /* Prevent line breaks */
+    white-space: pre-wrap; /* Allow line breaks */
+}
+
+.door-tag-label {
+    display: inline-flex;
+    background-color: #e0e0e0;
+    color: #333;
+    border-radius: 5px;
+    padding: 5px 10px;
+    margin: 0 15px 10px 0;
+    position: relative;
+    font-size: 10px;
+}
+
+.door-tag-label:hover::after {
+    content: "Width: " attr(data-width) "\AHeight: " attr(data-height) "\AQuantity: " attr(data-quantity);
+    position: absolute;
+    top: 100%; /* Position below the label */
+    left: 0;
+    width: 100px;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    white-space: nowrap; /* Prevent line breaks */
+    white-space: pre-wrap; /* Allow line breaks */
+}
+
+.window-tag-label {
+    display: inline-flex;
+    background-color: #e0e0e0;
+    color: #333;
+    border-radius: 5px;
+    padding: 5px 10px;
+    margin: 0 15px 10px 0;
+    position: relative;
+    font-size: 10px;
+}
+
+.window-tag-label:hover::after {
+    content: "Width: " attr(data-width) "\AHeight: " attr(data-height) "\AQuantity: " attr(data-quantity);
+    position: absolute;
+    top: 100%; /* Position below the label */
+    left: 0;
+    width: 100px;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    white-space: nowrap; /* Prevent line breaks */
+    white-space: pre-wrap; /* Allow line breaks */
+}
+
+.opening-tag-label {
+    display: inline-flex;
+    background-color: #e0e0e0;
+    color: #333;
+    border-radius: 5px;
+    padding: 5px 10px;
+    margin: 0 15px 10px 0;
+    position: relative;
+    font-size: 10px;
+}
+
+.opening-tag-label:hover::after {
+    content: "Area: " attr(data-area) "\AQuantity: " attr(data-quantity);
+    position: absolute;
+    top: 100%; /* Position below the label */
+    left: 0;
+    width: 100px;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    white-space: nowrap; /* Prevent line breaks */
+    white-space: pre-wrap; /* Allow line breaks */
+}
+
+.result{
+    margin: 20px;
+    padding: 20px;
+    display: flex;
+    width: 100%;
+    mix-blend-mode: darken;
+}
+
+.plot{
+    transition: scale 1.005s;
+}
+
+.plot:hover{
+    scale: 1.01;
+}
+
+.details {
+    margin: 0 0 0 150px;
+    font-family: Arial, sans-serif;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+table small{
+    font-size: 10px;
+}
+
+th, td {
+    padding: 12px 15px;
+    text-align: center;
+    border-bottom: 1px solid #dee2e6;
+}
+
+th {
+    background-color: #343a40;
+    color: #ffffff;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tr:hover {
+    background-color: #e9ecef;
+}
+
+td:last-child {
+    text-align: center;
+}
+
+.edit-btn {
+    padding: 8px 12px;
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.edit-btn:hover {
+    background-color: #0056b3;
+}
+
+.result{
+    align-items: center;
+}
+
+.typewriter-text {
+overflow: hidden;
+white-space: nowrap;
+margin: 0 auto;
+}
+
+.typewriter-font {
+font-family: 'Courier New', Courier, monospace;
+}
+
+#typewriter-container{
+    margin: 20px;
+    font-size: 20px;
+}
