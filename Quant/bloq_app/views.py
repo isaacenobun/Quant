@@ -294,9 +294,9 @@ def report(request):
     # calculations
     # -------------------------------------------------------------
 
-    save_path = os.path.join(settings.BASE_DIR, '/Users/user/Desktop/Repos/Quant/Quant/bloq_app/static/dxf_files', 'Sample1-lines.dxf')
+    save_path = os.path.join(settings.BASE_DIR, '/Users/user/Desktop/Repos/Quant/Quant/bloq_app/static/dxf_files', 'sample-4.dxf')
 
-    wall_block = {block.layer: walls_output(save_path, block.layer, block.width) for block in blocks}
+    wall_block = {block.layer: walls_output(save_path, block.layer, 225) for block in blocks}
 
     dxf_door_no = count_doors_in_layer(save_path)
 
@@ -310,16 +310,27 @@ def report(request):
     for opening in openings:
         openings_area += opening.area*opening.quantity
     
-    wall_lengths, wall_areas, node_areas = [],[],[]
+    wall_lengths, wall_areas, node_areas, H_mortar_areas, V_mortar_areas = [],[],[], [], []
     for block in blocks:
         wall_length = int(get_walls_length(save_path,block.layer,block.width))
-        node_area = calculate_nodes(save_path,block.width) * block.width*height
+        node_area = calculate_nodes(save_path,block.layer) * block.width*height
         wall_lengths.append(wall_length)
         wall_areas.append(wall_length*height)
         node_areas.append(node_area)
-    
-    
-    total_area = sum(np.array(wall_areas)) - openings_area + door_space - window_area - sum(np.array(node_areas))
+
+        # Mortar technicalities
+
+        H_mortar_lines = height/block.height
+        H_mortar_areas.append(H_mortar_lines * 9.53 * wall_length)
+
+        V_mortar_lines = (wall_length/block.length)/2
+        V_mortar_areas.append(V_mortar_lines * 9.53 * (height-(25*H_mortar_lines)))
+
+    total_node_area = sum(np.array(node_areas))
+
+    total_wall_length = sum(np.array(wall_lengths))
+
+    total_area = sum(np.array(wall_areas)) - openings_area + door_space - window_area - sum(np.array(node_areas)) - sum(np.array(H_mortar_areas)) - sum(np.array(V_mortar_areas))
 
     ratio = np.array(wall_areas)/min(np.array(wall_areas))
 
@@ -330,12 +341,14 @@ def report(request):
     block_no = []
     count=0
     for area in new_total_areas:
-        block_no.append(math.ceil((area/(blocks[count].length*blocks[count].height))))
+        block_no.append(math.ceil((area/((blocks[count].length)*(blocks[count].height)))))
+        # block_multiple = 9.88/10**6
+        # block_no.append(math.ceil(area*block_multiple))
         count=+1
     
     total_blocks = sum(np.array(block_no))
         
-    context = {'current_unit':current_unit, 'blocks':blocks,'doors':doors,'windows':windows,'openings':openings,'height':height,'wall_block':wall_block, 'dxf_door_no':dxf_door_no, 'input_door_no':input_door_no, 'door_area':door_area, 'door_space':door_space, 'window_area':window_area, 'openings_area':openings_area, 'wall_areas':wall_areas, 'block_no':block_no, 'total_blocks':total_blocks, 'wall_length':wall_length}
+    context = {'current_unit':current_unit, 'blocks':blocks,'doors':doors,'windows':windows,'openings':openings,'height':height,'wall_block':wall_block, 'dxf_door_no':dxf_door_no, 'input_door_no':input_door_no, 'door_area':door_area, 'door_space':door_space, 'window_area':window_area, 'openings_area':openings_area, 'wall_areas':wall_areas, 'block_no':block_no, 'total_blocks':total_blocks, 'total_wall_length':total_wall_length, 'total_node_area':total_node_area}
 
     return render(request, 'report.html', context)
 
