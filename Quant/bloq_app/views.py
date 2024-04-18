@@ -294,7 +294,7 @@ def report(request):
     # calculations
     # -------------------------------------------------------------
 
-    save_path = os.path.join(settings.BASE_DIR, '/Users/user/Desktop/Repos/Quant/Quant/bloq_app/static/dxf_files', 'sample-4.dxf')
+    save_path = os.path.join(settings.BASE_DIR, '/Users/user/Desktop/Repos/Quant/Quant/bloq_app/static/dxf_files', 'Sample1-lines.dxf')
 
     wall_block = {block.layer: walls_output(save_path, block.layer, 225) for block in blocks}
 

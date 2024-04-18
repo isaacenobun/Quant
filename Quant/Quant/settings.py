@@ -1,7 +1,7 @@
 import os
-import django_on_heroku
-import dj_database_url
-from decouple import config
+# import django_on_heroku
+# import dj_database_url
+# from decouple import config
 
 """
 Django settings for Quant project.
@@ -127,11 +127,11 @@ USE_TZ = True
 STATIC_URL = 'static/'
 STATICFILESDIRS = ['static']
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-django_on_heroku.settings(locals())
+# django_on_heroku.settings(locals())

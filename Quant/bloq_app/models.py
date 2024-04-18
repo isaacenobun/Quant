@@ -31,6 +31,7 @@ class block_model(models.Model):
     height = models.IntegerField(blank=False)
     length = models.IntegerField(blank=False)
     layer = models.CharField(max_length=100, blank=False)
+    # mortar = models.IntegerField(blank=False)
 
     def __str__(self):
         return f'W-{self.width} H-{self.height} L-{self.length} Layer-{self.layer}'
